@@ -5,6 +5,8 @@ import (
 	"sort"
 	"strings"
 
+	"instacli/pkg/spec"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -21,7 +23,7 @@ type Options map[string]Option
 
 // LoadOptions loads the command-line options from the embedded YAML file
 func LoadOptions() (Options, error) {
-	data, err := GetSpecFile("cli/instacli-command-line-options.yaml")
+	data, err := spec.GetSpecFile("cli/instacli-command-line-options.yaml")
 	if err != nil {
 		return nil, fmt.Errorf("error reading options file: %w", err)
 	}

@@ -1,8 +1,8 @@
 package cli
 
 import (
+	"instacli/pkg/spec"
 	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -13,8 +13,8 @@ func runSpecFile(t *testing.T, relPath string) {
 	if specRoot == "" {
 		t.Fatal("INSTACLI_SPEC environment variable not set")
 	}
-	filename := filepath.Join(specRoot, relPath)
-	data, err := os.ReadFile(filename)
+	filename := relPath
+	data, err := spec.GetSpecFile(filename)
 	if err != nil {
 		t.Fatalf("Failed to read test file: %v", err)
 	}
