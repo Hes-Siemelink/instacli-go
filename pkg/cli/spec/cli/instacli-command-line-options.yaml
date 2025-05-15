@@ -1,0 +1,25 @@
+help:
+  description: Print help on a script or directory and does not run anything
+  default: false
+  type: boolean
+  short option: h
+
+output:
+  description: Print the output at the end of the script in Yaml format
+  short option: o
+
+output-json:
+  description: Print the output at the end of the script in Json format
+  short option: j
+
+non-interactive:
+  description: Indicate that Instacli should not prompt for user input
+  default: false
+  type: boolean
+  short option: q
+
+debug:
+  description: Run in debug mode. Prints stacktraces when an error occurs.
+  default: false
+  type: boolean
+  short option: d

@@ -1,0 +1,18 @@
+# Build system
+/.idea
+/.gradle
+/build
+/out
+/.kotlin
+
+# Instacli spec
+/instacli
+
+install-cloud-connector.sh
+
+# AI tooling
+.aider.*
+.specstory/*
+.cursorindexingignore
+# SpecStory explanation file
+.specstory/.what-is-this.md
