@@ -1,0 +1,21 @@
+Script info:
+  description: Creates a new OIDC client
+  input:
+    client_id: Client ID
+
+---
+Connect to: Digital.ai Platform
+
+# Create client
+POST:
+  path: /identity/clients/oidc/
+  body:
+    name: ${input.client_id}
+    client_credentials_grant_enabled: true
+
+Print:
+  Use these credentials to authenticate:
+    grant_type: client_credentials
+    client_id: ${input.client_id}
+    client_secret: ${output.client.client_secret}
+    scope: openid dai-svc

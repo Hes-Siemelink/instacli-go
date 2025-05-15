@@ -1,0 +1,22 @@
+Script info:
+  description: Show albums of an artist
+  input:
+    name: Name of the artist
+
+---
+Get artist info:
+  name: ${input.name}
+As: ${artist}
+
+---
+Connect to: Spotify
+
+Get all:
+  url: /artists/${artist.id}/albums?include_groups=album
+Sort:
+  by: release_date
+As: ${albums}
+
+For each:
+  ${album} in: ${albums}
+  Print: ${album.name} (${album.release_date})

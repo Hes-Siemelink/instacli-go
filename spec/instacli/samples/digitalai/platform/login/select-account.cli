@@ -1,0 +1,35 @@
+Script info:
+  description: Select the default connection
+  input:
+    target:
+      description: Target service
+      default: Digital.ai Platform
+
+---
+Get all credentials: ${input.target}
+Append:
+  name: "* Create new account"
+As: ${accounts}
+
+---
+Prompt:
+  description: Select account to log in with
+  enum: ${accounts}
+  display property: name
+As: ${account}
+
+---
+If:
+  empty: ${account.url}
+  then:
+    Create new account: { }
+    As: ${account}
+
+---
+Set default credentials:
+  target: ${input.target}
+  name: ${account.name}
+
+Print: Using ${account.name} to log in to ${input.target}
+
+Output: ${account}

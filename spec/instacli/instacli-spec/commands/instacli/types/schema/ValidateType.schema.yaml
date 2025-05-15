@@ -1,0 +1,14 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+
+type: object
+
+required:
+  - "type"
+
+properties:
+  "item": { }
+  "type":
+    type:
+      - object  # Inline type definition
+      - string  # Type name
+additionalProperties: false

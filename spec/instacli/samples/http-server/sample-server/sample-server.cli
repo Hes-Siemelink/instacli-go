@@ -1,0 +1,57 @@
+Script info:
+  description: Starts the Instacli Sample Server
+
+Http server:
+  port: 2525
+  endpoints:
+    /hello:
+      get:
+        output: Hello from Instacli!
+
+    /greeting:
+      post: handlers/create-greeting.cli
+
+    /greetings:
+      get:
+        output:
+          English: Hello!
+          Spanish: ¡Hola!
+          Dutch: Hallo!
+
+    /items:
+      get:
+        output:
+          - 1
+          - 2
+          - 3
+      post:
+        script:
+          Fields: ${input}
+      put:
+        script:
+          Fields: ${input}
+      patch:
+        script:
+          Fields: ${input}
+      delete:
+        output: { }
+
+    /echo/header:
+      get:
+        output: ${request.headers}
+
+    /echo/path/{path}:
+      get:
+        output: ${request.pathParameters}
+
+    /echo/query:
+      get:
+        output: ${request.queryParameters}
+
+    /echo/body:
+      post:
+        output: ${request.body}
+
+    /echo/cookies:
+      get:
+        output: ${request.cookies}

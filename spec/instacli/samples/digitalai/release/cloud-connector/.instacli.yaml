@@ -1,0 +1,6 @@
+Script info: |
+  Commands for setting up Cloud Connector in Digital.ai Release
+
+connections:
+  Digital.ai Release: ../login/connect.cli
+  Digital.ai Platform: ../../platform/login/connect.cli

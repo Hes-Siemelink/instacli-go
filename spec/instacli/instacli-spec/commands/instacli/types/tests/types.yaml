@@ -1,0 +1,12 @@
+Person:
+  base: object
+  properties:
+    name: string
+
+Recursive Type:
+  base: object
+  properties:
+    name: string
+    child:
+      type: Recursive Type
+      optional: true

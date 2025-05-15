@@ -1,0 +1,20 @@
+Script info:
+  description: Deletes accounts from Digital.ai Platform
+  input:
+    name: Account name (leave empty to show all accounts)
+
+---
+Connect to: Digital.ai Platform
+
+Search accounts:
+  name: ${input.name}
+
+Prompt:
+  description: Select account to delete
+  enum: ${output}
+  select: multiple
+  display property: name
+
+For each:
+  Print: DELETE /identity/v1/accounts/${item.id}
+  DELETE: /identity/v1/accounts/${item.id}

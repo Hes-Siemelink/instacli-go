@@ -1,0 +1,24 @@
+Script info:
+  description: Deletes a connection
+  input:
+    target:
+      description: Target service
+      default: Digital.ai Platform
+
+---
+Get all credentials: ${input.target}
+As: ${accounts}
+
+---
+Prompt:
+  description: Select account to delete
+  enum: ${accounts}
+  type: select one
+  display property: name
+As: ${account}
+
+Delete credentials:
+  target: ${input.target}
+  name: ${account.name}
+
+Print: Deleted ${account.name} in ${input.target}

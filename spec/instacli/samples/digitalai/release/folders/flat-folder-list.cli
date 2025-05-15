@@ -1,0 +1,30 @@
+Script info:
+  description: Get all folder names
+  input:
+    folders:
+      description: List of folders coming from Release
+    prefix:
+      description: Prefix for folder names
+      default: ''
+  hidden: true
+
+---
+${folder_list}: [ ]
+
+For each:
+  ${folder} in: ${input.folders}
+  Add to:
+    ${folder_list}:
+      title: ${input.prefix}${folder.title}
+      id: ${folder.id}
+  If:
+    not:
+      empty: ${folder.children}
+    then:
+      Flat folder list:
+        folders: ${folder.children}
+        prefix: ${input.prefix}${folder.title}/
+      Add to:
+        ${folder_list}: ${output}
+
+Output: ${folder_list}

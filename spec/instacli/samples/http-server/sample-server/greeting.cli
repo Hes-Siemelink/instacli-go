@@ -1,0 +1,18 @@
+Script info:
+  description: Multi-language greeting
+  input:
+    name: Enter your name
+    language:
+      description: Select a language
+      enum:
+        - English
+        - Spanish
+        - Dutch
+
+POST:
+  url: http://localhost:2525/greeting
+  body:
+    name: ${input.name}
+    language: ${input.language}
+
+Print: ${output}

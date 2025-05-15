@@ -1,0 +1,15 @@
+Script info:
+  description: Creates a new Cloud Connector
+  input:
+    name: Cloud Connector name
+
+---
+Connect to: Digital.ai Platform
+
+# Create Cloud Connector
+POST:
+  path: /workload/v1/cloud_connectors/
+  body:
+    name: ${input.name}
+
+Print: Created '${input.name}' with id ${output.cloud_connector_definition.id}

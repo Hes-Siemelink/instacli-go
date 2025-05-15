@@ -1,0 +1,45 @@
+Script info: Logs in to Digital.ai Platform
+
+---
+# Do not reconnect if logged in already
+If:
+  not:
+    empty:
+      :Http request defaults: { }
+  then:
+    Exit: Already logged in
+
+---
+Get credentials: Digital.ai Platform
+As: ${endpoint}
+
+---
+# Ask for connection credentials if none are set
+If:
+  empty: ${endpoint}
+  then:
+    Create new account: { }
+    As: ${endpoint}
+
+Print: Connecting as ${endpoint.username} to ${endpoint.id} on ${endpoint.url}
+
+---
+# Use preset token
+If:
+  not:
+    empty: ${endpoint.token}
+  then:
+    Http request defaults:
+      url: ${endpoint.url}
+      headers:
+        Authorization: Token ${endpoint.token}
+    Exit: Using token authentication
+
+---
+# Get bearer token
+Get token: ${endpoint}
+
+Http request defaults:
+  url: ${endpoint.url}
+  headers:
+    Authorization: Bearer ${output.access_token}

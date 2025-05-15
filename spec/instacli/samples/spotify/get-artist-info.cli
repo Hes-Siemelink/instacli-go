@@ -1,0 +1,14 @@
+Script info:
+  description: Finds an artist
+  input:
+    name: Name of the artist
+
+---
+Connect to: Spotify
+
+GET: /search?q=${input.name}&type=artist
+
+Prompt:
+  description: Select artist
+  enum: ${output.artists.items}
+  display property: name

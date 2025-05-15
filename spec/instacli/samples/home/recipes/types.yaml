@@ -1,0 +1,19 @@
+Recipe:
+  base: object
+  properties:
+    title:
+      description: Title
+    ingredients:
+      description: List of ingredients
+      type:
+        list of: Ingredient
+    steps:
+      description: Instructions
+
+Ingredient:
+  base: object
+  properties:
+    name:
+      description: Ingredient
+    quantity:
+      description: Quantity

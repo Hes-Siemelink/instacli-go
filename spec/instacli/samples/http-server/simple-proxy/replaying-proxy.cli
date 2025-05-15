@@ -1,0 +1,38 @@
+Script info:
+  description: Simple proxy server
+
+  input:
+    storageDir:
+      description: Directory the requests will be read from
+      default: recorded-data
+
+${storageDir}: ${input.storageDir}
+
+---
+Http server:
+  port: 25101
+  endpoints:
+
+    # Handle any request
+    "*":
+
+      get:
+        script:
+          Read file: ${storageDir}/${request.path}/${request.query}/GET
+
+      post:
+        script:
+          Read file: ${storageDir}/${request.path}/${request.query}/POST
+
+      patch:
+        script:
+          Read file: ${storageDir}/${request.path}/${request.query}/PATCH
+
+      put:
+        script:
+          Read file: ${storageDir}/${request.path}/${request.query}/PUT
+
+      delete:
+        script:
+          Do: { } # No-op
+

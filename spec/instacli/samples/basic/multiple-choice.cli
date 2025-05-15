@@ -1,0 +1,13 @@
+Script info: Interaction example
+
+Prompt:
+  description: Select ingredients
+  select: multiple
+  enum:
+    - Apple
+    - Banana
+    - Cake
+    - Drizzle
+
+Print:
+  Your choices: ${output}

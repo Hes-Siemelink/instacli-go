@@ -1,0 +1,42 @@
+Script info:
+  description: Tower of Hanoi
+  input:
+    size:
+      description: Size of the tower
+      default: 3
+    from:
+      description: Tower to move from
+      default: A
+    to:
+      description: Tower to move to
+      default: B
+    helper:
+      description: Another tower
+      default: C
+
+---
+If:
+  empty: ${input.size}
+  then:
+    Exit: 0
+
+Add:
+  - ${input.size}
+  - -1
+As: ${one_smaller}
+
+---
+Hanoi:
+  size: ${one_smaller}
+  from: ${input.from}
+  to: ${input.helper}
+  helper: ${input.to}
+
+Print: Move disc ${input.size} from ${input.from} to ${input.to}
+
+---
+Hanoi:
+  size: ${one_smaller}
+  from: ${input.helper}
+  to: ${input.to}
+  helper: ${input.from}
